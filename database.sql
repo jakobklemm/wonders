@@ -7,7 +7,7 @@ CREATE TYPE "fileCategory" AS ENUM (
 );
 
 CREATE TABLE "challenge" (
-  "id" guid PRIMARY KEY,
+  "id" uuid PRIMARY KEY,
   "challengeId" int,
   "challengeTitle" varchar,
   "challengeDescription" text
@@ -15,23 +15,23 @@ CREATE TABLE "challenge" (
 
 CREATE TABLE "challengeEntry" (
   "id" guid PRIMARY KEY,
-  "challenge" guid,
+  "challenge" uuid,
   "entreePersonName" varchar,
   "entryName" varchar
 );
 
 CREATE TABLE "challengeSubmission" (
   "id" guid PRIMARY KEY,
-  "entry" guid,
+  "entry" uuid,
   "fileName" varchar,
   "fileFileEnding" varchar,
   "fileCategory" fileCategory DEFAULT 'uncategorized',
-  "fileCreatedOn" datetime
+  "fileCreatedOn" timestamp
 );
 
 CREATE TABLE "challengeSubmissionMetadata" (
   "id" guid PRIMARY KEY,
-  "submission" guid,
+  "submission" uuid,
   "metadata" jsonb
 );
 
