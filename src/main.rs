@@ -1,6 +1,8 @@
 use sqlx::{postgres::PgPoolOptions, types::Uuid};
 use std::env;
 
+mod error;
+
 #[derive(sqlx::FromRow)]
 struct Challenge {
     id: Uuid,
@@ -28,6 +30,7 @@ struct challengeSubmission {
 }
 
 enum fileCategory {
+    audio,
     image,
     video,
     docx,
