@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 sqlx = { version = "0.6.0", features = [ "runtime-tokio-rustls", "postgres", "json", "uuid"] }
 tokio = { version = "1", features = [ "full" ] }
+kamadak-exif = "0.5.4"
+serde_json = "1.0"
+serde = { version = "1.0", features = [ "derive" ] }

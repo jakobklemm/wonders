@@ -2,6 +2,8 @@ use sqlx::{postgres::PgPoolOptions, types::Uuid};
 use std::env;
 
 mod error;
+mod image;
+mod metadata;
 
 #[derive(sqlx::FromRow)]
 struct Challenge {
@@ -47,10 +49,11 @@ async fn main() -> Result<(), sqlx::Error> {
 
     let url = format!("postgres://postgres:{}@172.16.3.22:5432/wonders", pg_pass);
 
-    let _pool = PgPoolOptions::new()
-        .max_connections(5)
-        .connect(&url)
-        .await?;
+    let _pool = PgPoolOptions::new().max_connections(5).connect(&url);
+    // .await?;
+
+    let x = image::Image::from_file("test/2.jpg").unwrap();
+    println!("{:?}", x.metadata);
 
     return Ok(());
 }
